@@ -58,8 +58,8 @@ double run_experiment_ji ( mtype_t * matrix , mtype_t scalar , int buffer_size )
     
     start = get_time ();
     for ( iter = 0; iter < 5 ; ++ iter ) {
-        for (j = 0; j < buffer_size ; ++i ) {
-            for (i = 0; i < buffer_size ; ++j ) {
+        for (j = 0; j < buffer_size ; ++j ) {
+            for (i = 0; i < buffer_size ; ++i ) {
                 matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [ GET_INDEX (i, j, buffer_size ) ];
             }
         }
