@@ -10,11 +10,13 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size );
 
 int main(int argc, char * argv[]) {
     mtype_t * matrix = NULL ;
-    int i;
+    int i, MAX_SIZE;
     support_init();
 
     support_finalize();
-
+    if(argc==2)
+        MAX_SIZE = atoi(argv[2]);
+    else MAX_SIZE = 1024;
     for ( i = 2; i <= 1024; i * 2 ) {
         // Allocate a matrix of size : buffer_side x buffer_side
         allocate_matrix (& matrix , i );
