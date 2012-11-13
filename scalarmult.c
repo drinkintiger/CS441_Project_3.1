@@ -31,7 +31,7 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
     for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
         for (i = 0; i < buffer_size ; ++i ) {
             for (j = 0; j < buffer_size ; ++j ) {
-                matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [i][j];
+                matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [ GET_INDEX (i, j, buffer_size ) ];
             }
         }
     }
