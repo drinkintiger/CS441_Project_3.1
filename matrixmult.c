@@ -37,7 +37,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_c , i );
         
         double avg_time = run_experiment_ijk (matrix_a, matrix_b, matrix_c, i);
-        printf("The average time to do scalar multiplication ijk on a %d x %d x %d matrix is %lf \n", i, i, i, avg_time);
+        printf("The average time to do matrix multiplication ijk on a %d x %d x %d matrix is %lf \n", i, i, i, avg_time);
     }
     return 0;
 }
