@@ -1,16 +1,40 @@
 /*
- * <AUTHOR>
- * <DATE>
+ * Vladimir Tsoy and Jordan Harmel
+ * 11/12/12
  *
  * CS 441/541 : Project 3 Part 1
  */
 #include "scalarmult.h"
 
 int main(int argc, char * argv[]) {
+    mtype_t * matrix = NULL ;
 
     support_init();
 
     support_finalize();
 
+    // Allocate a matrix of size : buffer_side x buffer_side
+    allocate_matrix (& matrix , buffer_side );
+    
+    // Clear / Initialize the matrix
+    clear_matrix (matrix , buffer_side );
+
+    // Access matrix [i][j] in the 1D array
+    matrix [ GET_INDEX (i, j, buffer_side ) ] = ...;
+
+double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) {
+    int i, j, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for (i = 0; i < buffer_size ; ++i ) {
+            for (j = 0; j < buffer_size ; ++j ) {
+                matrix [i][j] = scalar * matrix [i][j];
+            }
+        }
+    }
+}
     return 0;
 }
