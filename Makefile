@@ -14,9 +14,9 @@
 CC=gcc
 CFLAGS=-Wall -O0 -g
 # Linker flag for Mac OS X
-LDFLAGS=-lm
+#LDFLAGS=-lm
 # Linker flag for Linux
-#LDFLAGS=-lm -lrt
+LDFLAGS=-lm -lrt
 
 PROGS=scalarmult matrixmult
 
