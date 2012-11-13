@@ -7,7 +7,10 @@
 #include "scalarmult.h"
 
 double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size );
+double run_experiment_ji ( mtype_t *matrix , mtype_t scalar , int buffer_size );
+
 int MAX_ITERS = 1000;
+
 int main(int argc, char * argv[]) {
     mtype_t * matrix = NULL ;
     int i, MAX_SIZE;
@@ -24,12 +27,18 @@ int main(int argc, char * argv[]) {
         // Clear / Initialize the matrix
         clear_matrix (matrix , i );
         
-        printf("------------------------------------------------------------------------------\n");
-        double avg_time = run_experiment_ij (matrix, 5.0, i);
+        double avg_time = run_experiment_ji (matrix, 5.0, i);
         printf("The average time to do scalar multiplication ij on a %d x %d matrix is %lf \n", i, i, avg_time);
-        avg_time = run_experiment_ij (matrix, 5.0, i);
-        printf("The average time to do scalar multiplication ji on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix , i );
         
+        double avg_time = run_experiment_ji (matrix, 5.0, i);
+        printf("The average time to do scalar multiplication ji on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
 
     support_finalize();
