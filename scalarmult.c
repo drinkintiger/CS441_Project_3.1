@@ -10,7 +10,7 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size );
 
 int main(int argc, char * argv[]) {
     mtype_t * matrix = NULL ;
-
+    int i;
     support_init();
 
     support_finalize();
@@ -23,6 +23,10 @@ int main(int argc, char * argv[]) {
 
     // Access matrix [i][j] in the 1D array
     matrix [ GET_INDEX (i, j, buffer_side ) ] = ...;
+    
+    for ( i = 2; i <= 1024; i * 2 ) {
+        
+    }
 
 double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) {
     int i, j, iter;
