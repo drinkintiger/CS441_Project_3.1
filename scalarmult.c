@@ -22,8 +22,12 @@ int main(int argc, char * argv[]) {
         // Clear / Initialize the matrix
         clear_matrix (matrix , i );
         
+        printf("------------------------------------------------------------------------------\n");
         double avg_time = run_experiment_ij (matrix, random(), i);
-        printf("The average time to do scalar multiplication on a %d x %d matrix is %lf \n", i, i, avg_time);
+        printf("The average time to do scalar multiplication ij on a %d x %d matrix is %lf \n", i, i, avg_time);
+        avg_time = run_experiment_ij (matrix, random(), i);
+        printf("The average time to do scalar multiplication ji on a %d x %d matrix is %lf \n", i, i, avg_time);
+        
     }
 
     support_finalize();
@@ -40,6 +44,22 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
     for ( iter = 0; iter < 5 ; ++ iter ) {
         for (i = 0; i < buffer_size ; ++i ) {
             for (j = 0; j < buffer_size ; ++j ) {
+                matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [ GET_INDEX (i, j, buffer_size ) ];
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / 5 ;
+}
+double run_experiment_ji ( mtype_t * matrix , mtype_t scalar , int buffer_size ) {
+    int i, j, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < 5 ; ++ iter ) {
+        for (j = 0; j < buffer_size ; ++i ) {
+            for (i = 0; i < buffer_size ; ++j ) {
                 matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [ GET_INDEX (i, j, buffer_size ) ];
             }
         }
