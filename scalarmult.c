@@ -15,7 +15,7 @@ int main(int argc, char * argv[]) {
 
     support_finalize();
     if(argc==2)
-        MAX_SIZE = atoi(argv[2]);
+        MAX_SIZE = atoi(argv[1]);
     else MAX_SIZE = 1024;
     for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
         // Allocate a matrix of size : buffer_side x buffer_side
