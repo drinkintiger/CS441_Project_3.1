@@ -23,6 +23,8 @@ int main(int argc, char * argv[]) {
         // Clear / Initialize the matrix
         clear_matrix (matrix , i );
     }
+    return 0;
+}
 
 double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) {
     int i, j, iter;
@@ -39,6 +41,4 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
     }
     end = get_time ();
     return final_time = diff_timers (start , end) / 5 ;
-}
-    return 0;
 }
