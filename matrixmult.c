@@ -39,6 +39,76 @@ int main(int argc, char * argv[]) {
         double avg_time = run_experiment_ijk (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication ijk on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix_a , i );
+        allocate_matrix (& matrix_b , i );
+        allocate_matrix (& matrix_c , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix_a , i );
+        clear_matrix (matrix_b , i );
+        clear_matrix (matrix_c , i );
+        
+        double avg_time = run_experiment_jik (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication jik on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix_a , i );
+        allocate_matrix (& matrix_b , i );
+        allocate_matrix (& matrix_c , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix_a , i );
+        clear_matrix (matrix_b , i );
+        clear_matrix (matrix_c , i );
+        
+        double avg_time = run_experiment_jki (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication jki on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix_a , i );
+        allocate_matrix (& matrix_b , i );
+        allocate_matrix (& matrix_c , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix_a , i );
+        clear_matrix (matrix_b , i );
+        clear_matrix (matrix_c , i );
+        
+        double avg_time = run_experiment_ikj (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication ikj on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix_a , i );
+        allocate_matrix (& matrix_b , i );
+        allocate_matrix (& matrix_c , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix_a , i );
+        clear_matrix (matrix_b , i );
+        clear_matrix (matrix_c , i );
+        
+        double avg_time = run_experiment_kji (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication kji on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
+    printf("------------------------------------------------------------------------------\n");
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+        // Allocate a matrix of size : buffer_side x buffer_side
+        allocate_matrix (& matrix_a , i );
+        allocate_matrix (& matrix_b , i );
+        allocate_matrix (& matrix_c , i );
+        // Clear / Initialize the matrix
+        clear_matrix (matrix_a , i );
+        clear_matrix (matrix_b , i );
+        clear_matrix (matrix_c , i );
+        
+        double avg_time = run_experiment_kij (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication kij on a %d x %d matrix is %lf \n", i, i, avg_time);
+    }
     return 0;
 }
 
@@ -52,6 +122,106 @@ double run_experiment_ijk ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * 
         for ( i = 0; i < buffer_size ; ++ i ) {
             for ( j = 0; j < buffer_size ; ++ j ) {
                 for ( k = 0; k < buffer_size ; ++ k ) {
+                    matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
+                }
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / MAX_ITERS ;
+}
+
+double run_experiment_jik ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * matrix_c , int buffer_size ) {
+    int i, j, k, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for ( i = 0; j < buffer_size ; ++ i ) {
+            for ( j = 0; i < buffer_size ; ++ j ) {
+                for ( k = 0; k < buffer_size ; ++ k ) {
+
+                    matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
+                }
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / MAX_ITERS ;
+}
+
+double run_experiment_jki ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * matrix_c , int buffer_size ) {
+    int i, j, k, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for ( i = 0; j < buffer_size ; ++ i ) {
+            for ( j = 0; k < buffer_size ; ++ j ) {
+                for ( k = 0; i < buffer_size ; ++ k ) {
+
+                    matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
+                }
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / MAX_ITERS ;
+}
+
+double run_experiment_ikj ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * matrix_c , int buffer_size ) {
+    int i, j, k, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for ( i = 0; i < buffer_size ; ++ i ) {
+            for ( j = 0; k < buffer_size ; ++ j ) {
+                for ( k = 0; j < buffer_size ; ++ k ) {
+
+                    matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
+                }
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / MAX_ITERS ;
+}
+
+double run_experiment_kji ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * matrix_c , int buffer_size ) {
+    int i, j, k, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for ( i = 0; k < buffer_size ; ++ i ) {
+            for ( j = 0; j < buffer_size ; ++ j ) {
+                for ( k = 0; i < buffer_size ; ++ k ) {
+
+                    matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
+                }
+            }
+        }
+    }
+    end = get_time ();
+    return final_time = diff_timers (start , end) / MAX_ITERS ;
+}
+
+double run_experiment_kij ( mtype_t * matrix_a , mtype_t * matrix_b , mtype_t * matrix_c , int buffer_size ) {
+    int i, j, k, iter;
+    hptimer_t start , end;
+    double final_time ;
+    
+    start = get_time ();
+    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+        for ( i = 0; k < buffer_size ; ++ i ) {
+            for ( j = 0; i < buffer_size ; ++ j ) {
+                for ( k = 0; j < buffer_size ; ++ k ) {
+
                     matrix_c [ GET_INDEX (i, j, buffer_size ) ] += matrix_a [ GET_INDEX (i, k, buffer_size ) ] * matrix_b [ GET_INDEX (k, j, buffer_size ) ];
                 }
             }
