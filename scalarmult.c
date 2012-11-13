@@ -17,7 +17,7 @@ int main(int argc, char * argv[]) {
     if(argc==2)
         MAX_SIZE = atoi(argv[2]);
     else MAX_SIZE = 1024;
-    for ( i = 2; i <= 1024; i * 2 ) {
+    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
         // Allocate a matrix of size : buffer_side x buffer_side
         allocate_matrix (& matrix , i );
         // Clear / Initialize the matrix
@@ -30,7 +30,7 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
     double final_time ;
     
     start = get_time ();
-    for ( iter = 0; iter < MAX_ITERS ; ++ iter ) {
+    for ( iter = 0; iter < 5 ; ++ iter ) {
         for (i = 0; i < buffer_size ; ++i ) {
             for (j = 0; j < buffer_size ; ++j ) {
                 matrix [ GET_INDEX (i, j, buffer_size ) ] = scalar * matrix [ GET_INDEX (i, j, buffer_size ) ];
@@ -38,7 +38,7 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
         }
     }
     end = get_time ();
-    final_time = diff_timers (start , end) / MAX_ITERS ;
+    return final_time = diff_timers (start , end) / 5 ;
 }
     return 0;
 }
