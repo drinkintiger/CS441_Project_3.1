@@ -12,8 +12,7 @@ int main(int argc, char * argv[]) {
     mtype_t * matrix = NULL ;
     int i, MAX_SIZE;
     support_init();
-
-    support_finalize();
+    
     if(argc==2)
         MAX_SIZE = atoi(argv[1]);
     else MAX_SIZE = 1024;
@@ -22,7 +21,13 @@ int main(int argc, char * argv[]) {
         allocate_matrix (& matrix , i );
         // Clear / Initialize the matrix
         clear_matrix (matrix , i );
+        
+        double avg_time = run_experiment_ij (matrix, random(), i);
+        printf("The average time to do scalar multiplication on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
+
+    support_finalize();
+    
     return 0;
 }
 
