@@ -6,6 +6,8 @@
  */
 #include "scalarmult.h"
 
+double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size );
+
 int main(int argc, char * argv[]) {
     mtype_t * matrix = NULL ;
 
@@ -35,6 +37,8 @@ double run_experiment_ij ( mtype_t *matrix , mtype_t scalar , int buffer_size ) 
             }
         }
     }
+    end = get_time ();
+    final_time = diff_timers (start , end) / MAX_ITERS ;
 }
     return 0;
 }
