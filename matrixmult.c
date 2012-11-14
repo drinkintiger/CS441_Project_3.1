@@ -19,6 +19,7 @@ int main(int argc, char * argv[]) {
     mtype_t * matrix_b = NULL ;
     mtype_t * matrix_c = NULL ;
     int i, MAX_SIZE;
+    double avg_time;
     support_init();
     
     MAX_ITERS = 5;
@@ -36,7 +37,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_ijk (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_ijk (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication ijk on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
@@ -50,7 +51,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_jik (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_jik (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication jik on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
@@ -64,7 +65,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_jki (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_jki (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication jki on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
@@ -78,7 +79,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_ikj (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_ikj (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication ikj on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
@@ -92,7 +93,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_kji (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_kji (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication kji on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
@@ -106,7 +107,7 @@ int main(int argc, char * argv[]) {
         clear_matrix (matrix_b , i );
         clear_matrix (matrix_c , i );
         
-        double avg_time = run_experiment_kij (matrix_a, matrix_b, matrix_c, i);
+        avg_time = run_experiment_kij (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication kij on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     return 0;
