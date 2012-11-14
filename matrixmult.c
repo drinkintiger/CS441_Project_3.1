@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
     double avg_time;
     support_init();
     
-    MAX_ITERS = 5;
+    MAX_ITERS = 2;
     
     if(argc==2)
         MAX_SIZE = atoi(argv[1]);

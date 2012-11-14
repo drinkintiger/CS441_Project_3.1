@@ -17,7 +17,7 @@ int main(int argc, char * argv[]) {
     double avg_time;
     support_init();
     
-    MAX_ITERS = 10000;
+    MAX_ITERS = 100;
     
     if(argc==2)
         MAX_SIZE = atoi(argv[1]);
@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
         // Clear / Initialize the matrix
         clear_matrix (matrix , i );
         
-        avg_time = run_experiment_ji (matrix, 5.0, i);
+        avg_time = run_experiment_ij (matrix, 5.0, i);
         printf("The average time to do scalar multiplication ij on a %d x %d matrix is %lf \n", i, i, avg_time);
     }
     printf("------------------------------------------------------------------------------\n");
