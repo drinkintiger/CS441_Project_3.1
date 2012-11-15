@@ -20,7 +20,16 @@ int main(int argc, char * argv[]) {
     MAX_ITERS = 100;
     
     if(argc==2)
-        MAX_SIZE = atoi(argv[1]);
+        if(atoi(argv[1])>=2)
+            MAX_SIZE = atoi(argv[1]);
+        else{
+        printf("The argument must be an integer and larger than or equal to 2");
+        return -1;
+        }
+    else if(argc>2){
+        printf("This program takes one or no arguments, you entered too many.");
+        return -1;
+    }
     else MAX_SIZE = 1024;
     for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
         // Allocate a matrix of size : buffer_side x buffer_side
