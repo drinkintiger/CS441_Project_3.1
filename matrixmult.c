@@ -40,12 +40,31 @@ int main(int argc, char * argv[]) {
         avg_time = run_experiment_ijk (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication ijk on a %d x %d matrix is %f \n", i, i, avg_time);
         
+        avg_time = run_experiment_jik (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication jik on a %d x %d matrix is %f \n", i, i, avg_time);
+        
+
+        avg_time = run_experiment_jki (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication jki on a %d x %d matrix is %f \n", i, i, avg_time);
+        
+        avg_time = run_experiment_ikj (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication ikj on a %d x %d matrix is %f \n", i, i, avg_time);
+        
+
+        avg_time = run_experiment_kji (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication kji on a %d x %d matrix is %f \n", i, i, avg_time);
+        
+
+        avg_time = run_experiment_kij (matrix_a, matrix_b, matrix_c, i);
+        printf("The average time to do matrix multiplication kij on a %d x %d matrix is %f \n", i, i, avg_time);
+        
         free(matrix_a);
         free(matrix_b);
         free(matrix_c);
+        printf("------------------------------------------------------------------------------\n");
     }
     printf("------------------------------------------------------------------------------\n");
-    for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
+   /* for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
         // Allocate a matrix of size : buffer_side x buffer_side
         allocate_matrix (& matrix_a , i );
         allocate_matrix (& matrix_b , i );
@@ -93,6 +112,10 @@ int main(int argc, char * argv[]) {
         
         avg_time = run_experiment_ikj (matrix_a, matrix_b, matrix_c, i);
         printf("The average time to do matrix multiplication ikj on a %d x %d matrix is %f \n", i, i, avg_time);
+        
+        free(matrix_a);
+        free(matrix_b);
+        free(matrix_c);
     }
     printf("------------------------------------------------------------------------------\n");
     for ( i = 2; i <= MAX_SIZE; i = i * 2 ) {
@@ -129,7 +152,7 @@ int main(int argc, char * argv[]) {
         free(matrix_a);
         free(matrix_b);
         free(matrix_c);
-    }
+    }*/
     return 0;
 }
 
