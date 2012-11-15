@@ -1,14 +1,18 @@
 Vladimir Tsoy 
 Jordan Harmel
 CS 441/541
-11/4/12
+11/14/12
 
 Description:
 -------------------------------------------------------------------------------
-Implementation of the traffic intersection problem.
+Contains two programs that demonstrate the differences in speed over certain ways
+of multipling a square matrix by a scalar and by another matrix of equal size.
 
-There is one program included. This program runs with one argument which denotes
-the number of cars that approach the intersection.
+The first program included demonstrates the differences between row major and
+column major multiplication of a scalar to a square matrix.
+
+The second multiplies a square matrix by another of equal size, this demonstrates
+the six different ways that the arrays can be iteated through.
 
 How to compile:
 -------------------------------------------------------------------------------
@@ -23,82 +27,88 @@ To clean the build:
 
 How to run:
 -------------------------------------------------------------------------------
-To run the program type the following into the command line
+The scalar multiplication takes one optional input as the max size the arrays will
+grow to, if no argument is passed it defaults to stop at 1024x1024.
+In the shell type:
 
-   ./stoplight 5
+./scalarmult
+or
+./scalarmult 2048 
+
+The matrix multplication also takes an optional argument or defaults to 1024.
+Un the shell type:
+
+./matrixmult
+or
+./matrixmult 2048
 
 Example(s):
 -------------------------------------------------------------------------------
-This example runs with 1 argument, the argument passed sets how many cars there 
-will be.
+This example runs scalar multiplication with 1 argument, the argument passed 
+sets how big the final array wil be.
 
 Example 1):
 ===============================================================================
-shell$ ./stoplight 5
-Number of Cars:   5
--------------------------------
- Car ID |   Approach from |       Travel to |           State | Time (msec)
---------+-----------------+-----------------+-----------------+--------------
-      3 |            East |           North |        Approach |      0.000
-      3 |            East |           North |        Go Right |      0.006
-      4 |            East |           North |        Approach |      0.000
-      1 |            West |           North |        Approach |      0.000
-      0 |           North |            East |        Approach |      0.000
-      2 |           North |            West |        Approach |      0.000
-      1 |            West |           North |         Go Left |      1.627
-      3 |            East |           North |           Leave |      2.461
-      1 |            West |           North |           Leave |      8.994
-      0 |           North |            East |         Go Left |      7.962
-      4 |            East |           North |        Go Right |      8.948
-      4 |            East |           North |           Leave |     11.634
-      0 |           North |            East |           Leave |     14.413
-      2 |           North |            West |        Go Right |     14.227
-      2 |           North |            West |           Leave |     16.771
---------+-----------------+-----------------+-----------------+--------------
-Min.  time:      2.461
-Avg.  time:     10.855
-Max.  time:     16.771
-Total time:     54.273
---------+-----------------+-----------------+-----------------+--------------
+shell$ ./scalarmult 2048
+The average time to do scalar multiplication ij on a 2 x 2 matrix is 0.000001
+The average time to do scalar multiplication ij on a 4 x 4 matrix is 0.000004
+The average time to do scalar multiplication ij on a 8 x 8 matrix is 0.000002
+The average time to do scalar multiplication ij on a 16 x 16 matrix is 0.000006
+The average time to do scalar multiplication ij on a 32 x 32 matrix is 0.000010
+The average time to do scalar multiplication ij on a 64 x 64 matrix is 0.000030
+The average time to do scalar multiplication ij on a 128 x 128 matrix is 0.000140
+The average time to do scalar multiplication ij on a 256 x 256 matrix is 0.000550
+The average time to do scalar multiplication ij on a 512 x 512 matrix is 0.002360
+The average time to do scalar multiplication ij on a 1024 x 1024 matrix is 0.008300
+The average time to do scalar multiplication ij on a 2048 x 2048 matrix is 0.033152
+------------------------------------------------------------------------------
+The average time to do scalar multiplication ji on a 2 x 2 matrix is 0.000001
+The average time to do scalar multiplication ji on a 4 x 4 matrix is 0.000002
+The average time to do scalar multiplication ji on a 8 x 8 matrix is 0.000001
+The average time to do scalar multiplication ji on a 16 x 16 matrix is 0.000002
+The average time to do scalar multiplication ji on a 32 x 32 matrix is 0.000010
+The average time to do scalar multiplication ji on a 64 x 64 matrix is 0.000040
+The average time to do scalar multiplication ji on a 128 x 128 matrix is 0.000150
+The average time to do scalar multiplication ji on a 256 x 256 matrix is 0.000710
+The average time to do scalar multiplication ji on a 512 x 512 matrix is 0.004010
+The average time to do scalar multiplication ji on a 1024 x 1024 matrix is 0.061524
+The average time to do scalar multiplication ji on a 2048 x 2048 matrix is 0.249714
+
 
 shell$
 
 ===============================================================================
 
-Testing:
--------------------------------------------------------------------------------
-To test the program, we tried to pass too many or too few arguments to test
-that it only accepted the proper amount of arguments. Also, we tried passing
-invalid inputs to make sure that they are caught. The code you provided seems 
-to provide this functionality.
+This example runs the matrix multiplication with o arguments, the final array
+will be an array 1024x1024
 
-Special Section: (Pre Programming)
+shell$: ./matrixmult
+The average time to do matrix multiplication ijk on a 2 x 2 matrix is 0.000006
+The average time to do matrix multiplication ijk on a 4 x 4 matrix is 0.000008
+The average time to do matrix multiplication ijk on a 8 x 8 matrix is 0.000021
+The average time to do matrix multiplication ijk on a 16 x 16 matrix is 0.00013
+The average time to do matrix multiplication ijk on a 32 x 32 matrix is 0.001001
+The average time to do matrix multiplication ijk on a 64 x 64 matrix is 0.004000
+The average time to do matrix multiplication ijk on a 128 x 128 matrix is 0.030000
+The average time to do matrix multiplication ijk on a 256 x 256 matrix is 0.244000
+The average time to do matrix multiplication ijk on a 512 x 512 matrix is 2.294005
+The average time to do matrix multiplication ijk on a 1024 x 1024 matrix is 64.094746
+------------------------------------------------------------------------------
+(It prints out 5 more chunks of code like this for each permutation of iterating
+through the matricies, I have ommitted them because it is pretty redundant)
 
-1. The intersection is being controlled by a first come first serve manner, in which
-   only one car may be in the intersection at one time no matter the direction of the two.
-   It is a solution, but suboptimal because, if there is a car approaching from the north 
-   that wants to go straight and another car that approaches from the south and wants to 
-   go straight and a third car from either the west or east arrives between the first and
-   second. The northbound and southbound cars will not be able to go at the same time, the 
-   northbound car will have to wait until the car that approached from the east or west has 
-   left the intersection which, is only after the southbound car has also left.   
-2. The instance that can produce a deadlock is when there are four cars arriving from each
-   of the directions at the same time and all of them want to make a left turn.
-Special Section: (Post Programming)
+shell$:
 
-1. This program does not deadlock because of the way we distribute the locks.
-   We avoid the situation where one car will acquire a lock and wait on another
-   lock that is being held by another car. 
-2. Accidents are prevented by using semaphore for each quadrant of the intersection
-   to ensure that there are not two cars occupying the same quadrant at the same time.
-3. Starvation is addressed by not blocking the entire intersection while there is a 
-   car in the intersection.
-4. Traffic flow is improved because if you have two cars that want to go straight
-   it will allow them to both go, instead of having one go and then having the other
-   go once the first car has exited the intersection.
-5. Fairness is implemented by using semaphores for each direction to ensure that a 
-   car that arrives say at the north behind another car at the north doesn't go 
-   before the first car.
+===============================================================================
+Questions(Scalar Multiplication):
+
+The row-major multiplication had the best overall performance between the two.
+
+Questions(Matrix Multiplication):
+
+The ikj multiplication had the best performance
+From best to worst it was ikj, kij, ijk, jik, and it's a toss up between jki and kji
+
 -------------------------------------------------------------------------------
 
 Known bugs & limitations:
