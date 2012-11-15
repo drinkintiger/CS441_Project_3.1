@@ -126,9 +126,7 @@ Testing:
 To test the program, we tried to pass too many or too few arguments to test
 that it only accepted the proper amount of arguments. Also, we tried passing
 invalid inputs to make sure that they are caught.
-To test the program, we tried to pass too many or too few arguments to test
-that it only accepted the proper amount of arguments. Also, we tried passing
-invalid inputs to make sure that they are caught.
+-------------------------------------------------------------------------------
 Known bugs & limitations:
 -------------------------------------------------------------------------------
 -None that we found.
