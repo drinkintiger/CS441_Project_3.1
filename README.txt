@@ -103,12 +103,21 @@ shell$:
 Questions(Scalar Multiplication):
 
 The row-major multiplication had the best overall performance between the two.
+The reason the row major experiment is performing better than the column major is
+because once the size of the matrix becomes larger than what can be fit in cache and
+blocks start being evicted in the row major case the data doesn't need to be reloaded
+as in coulmn major case. Hence better performance on row manjor case.
 
 Questions(Matrix Multiplication):
 
 The ikj multiplication had the best performance
 From best to worst it was ikj, kij, ijk, jik, and it's a toss up between jki and kji
-
+The experiments ikj and kji outperform the rest of experiments because in the instance
+of ikj we essentially calculating in the row major fasion and kji case it is a column
+major fasion. However, in the rest of experiments it is a variations of diagonal major
+fasion. And so as the matrix becomes larger than what can be fit in cache, the number of
+times we have to evict and reload memory blocks is much greater for diagonal major fasion
+in compare to row or column major fasion.
 -------------------------------------------------------------------------------
 
 Known bugs & limitations:
