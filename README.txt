@@ -94,6 +94,8 @@ The average time to do matrix multiplication ijk on a 256 x 256 matrix is 0.2440
 The average time to do matrix multiplication ijk on a 512 x 512 matrix is 2.294005
 The average time to do matrix multiplication ijk on a 1024 x 1024 matrix is 64.094746
 ------------------------------------------------------------------------------
+NOTE: The actual print out looks different, for matrix multiplication each iteration
+performs all experiments before incrementing. The above is an example of one experiment.
 (It prints out 5 more chunks of code like this for each permutation of iterating
 through the matricies, I have ommitted them because it is pretty redundant)
 
@@ -119,7 +121,14 @@ fasion. And so as the matrix becomes larger than what can be fit in cache, the n
 times we have to evict and reload memory blocks is much greater for diagonal major fasion
 in compare to row or column major fasion.
 -------------------------------------------------------------------------------
-
+Testing:
+-------------------------------------------------------------------------------
+To test the program, we tried to pass too many or too few arguments to test
+that it only accepted the proper amount of arguments. Also, we tried passing
+invalid inputs to make sure that they are caught.
+To test the program, we tried to pass too many or too few arguments to test
+that it only accepted the proper amount of arguments. Also, we tried passing
+invalid inputs to make sure that they are caught.
 Known bugs & limitations:
 -------------------------------------------------------------------------------
 -None that we found.
